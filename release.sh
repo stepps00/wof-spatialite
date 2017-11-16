@@ -10,8 +10,8 @@ DB_DIR="/data/build/${TODAY}"
 BUNDLE_DIR="${DB_DIR}/bundles"
 
 # placetypes
-PLACETYPES=( 'neighbourhood' 'macrohood' 'borough' 'locality' 'localadmin' 'county' 'macrocounty' 'region'
-  'macroregion' 'disputed' 'dependency' 'country' 'empire' 'marinearea' 'continent' 'ocean' )
+PLACETYPES=( 'campus' 'microhood' 'neighbourhood' 'macrohood' 'borough' 'locality' 'localadmin' 'county' 'macrocounty' 'region'
+  'macroregion' 'disputed' 'dependency' 'country' 'empire' 'marinearea' 'continent' 'ocean' 'planet' )
 
 # ensure dirs exists
 mkdir -p "${BUNDLE_DIR}"
@@ -32,7 +32,7 @@ function build(){
     docker run --rm -v "${BUNDLE_DIR}/${1}:/in" 'missinglink/wof-spatialite' ogr_simplify_dir /in 0.0001
 
     echo '-- remove processed files --'
-    rm -rf "${BUNDLE_DIR}/${1}"
+    docker run --rm -v "${BUNDLE_DIR}:/in" 'ubuntu:16.04' rm -rf "/in/${1}"
   fi
 
   # create database file
