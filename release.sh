@@ -6,11 +6,13 @@ COMPLEXITY=100
 
 # bundle dir
 TODAY=`date +%Y-%m-%d`
-DB_DIR="/data/build/${TODAY}"
+
+#local directory to build in
+DB_DIR="/usr/local/data/build/${TODAY}"
 BUNDLE_DIR="${DB_DIR}/bundles"
 
 # placetypes
-PLACETYPES=( 'neighbourhood' 'macrohood' 'borough' 'locality' 'localadmin' 'county' 'macrocounty' 'region'
+PLACETYPES=( 'neighbourhood' 'macrohood' 'microhood' 'borough' 'locality' 'localadmin' 'county' 'macrocounty' 'region'
   'macroregion' 'disputed' 'dependency' 'country' 'empire' 'marinearea' 'continent' 'ocean' )
 
 # ensure dirs exists
